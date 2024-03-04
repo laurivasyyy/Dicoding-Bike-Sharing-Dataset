@@ -6,9 +6,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import subprocess
 
-# Install required packages
-subprocess.check_call(["pip", "install", "plotly==5.3.1"])
-
 st.markdown(
     """
     <div style="display: flex; align-items: center; justify-content: center; background-color: #f3f3f3; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
