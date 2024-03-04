@@ -1,11 +1,13 @@
-!pip install plotly==5.3.1
 import plotly.express as px
 import streamlit as st
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import subprocess
 
+# Install required packages
+subprocess.check_call(["pip", "install", "plotly==5.3.1"])
 
 st.markdown(
     """
