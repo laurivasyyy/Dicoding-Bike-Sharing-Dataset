@@ -81,13 +81,18 @@ def create_seasonly_users(hour_df):
 
     return seasonly_users
 
-
 def create_weekday_users(hour_df):
     weekday_users = hour_df.groupby("day").agg({
         "casual": "sum",
         "registered": "sum",
         "total": "sum"
-    }).reset_index()
+    })
+    weekday_users = weekday_users.reset_index()
+    weekday_users.rename(columns={
+        "total": "total_rides",
+        "casual": "casual_customers",
+        "registered": "registered_customers"
+    }, inplace=True)
 
     weekday_users = pd.melt(weekday_users,
                             id_vars=['day'],
@@ -96,8 +101,7 @@ def create_weekday_users(hour_df):
                             value_name='total')
 
     weekday_users['day'] = pd.Categorical(weekday_users['day'],
-                                           categories=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-                                           ordered=True)
+                                          categories=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'])
 
     weekday_users = weekday_users.sort_values('day')
 
