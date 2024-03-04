@@ -17,8 +17,8 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-day_df = pd.read_csv("/Users/laurivasy/Desktop/Bike-Sharing/Dashboard/bike-sharing-cleaned-day.csv")
-hour_df = pd.read_csv("/Users/laurivasy/Desktop/Bike-Sharing/Dashboard/bike-sharing-cleaned-hour.csv")
+day_df = pd.read_csv("Dashboard/bike-sharing-cleaned-day.csv")
+hour_df = pd.read_csv("Dashboard/bike-sharing-cleaned-hour.csv")
 hour_df['date'] = pd.to_datetime(hour_df['date'])
 day_df['date'] = pd.to_datetime(day_df['date'])
 
