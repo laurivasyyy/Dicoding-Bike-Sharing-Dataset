@@ -70,7 +70,7 @@ def create_seasonly_users(hour_df):
 
     seasonly_users = pd.melt(seasonly_users,
                              id_vars=['season'],
-                             value_vars=['casual_customers', 'registered_customers'],
+                             value_vars=['casual_rides', 'registered_rides'],
                              var_name='user_status',
                              value_name='total')
 
@@ -80,6 +80,7 @@ def create_seasonly_users(hour_df):
     seasonly_users = seasonly_users.sort_values('season')
 
     return seasonly_users
+
 
 def create_weekday_users(hour_df):
     weekday_users = hour_df.groupby("day").agg({
