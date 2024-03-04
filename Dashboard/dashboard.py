@@ -1,3 +1,4 @@
+!pip install plotly==5.3.1
 import plotly.express as px
 import streamlit as st
 import numpy as np
