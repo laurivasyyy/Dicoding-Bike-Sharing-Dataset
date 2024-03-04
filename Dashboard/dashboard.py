@@ -86,26 +86,22 @@ def create_weekday_users(hour_df):
         "casual": "sum",
         "registered": "sum",
         "total": "sum"
-    })
-    weekday_users = weekday_users.reset_index()
-    weekday_users.rename(columns={
-        "total": "total",
-        "casual": "casual_customers",
-        "registered": "registered_customers"
-    }, inplace=True)
+    }).reset_index()
 
     weekday_users = pd.melt(weekday_users,
                             id_vars=['day'],
-                            value_vars=['casual_customers', 'registered_customers'],
+                            value_vars=['casual', 'registered'],
                             var_name='user_status',
                             value_name='total')
 
     weekday_users['day'] = pd.Categorical(weekday_users['day'],
-                                             categories=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'])
+                                           categories=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+                                           ordered=True)
 
     weekday_users = weekday_users.sort_values('day')
 
     return weekday_users
+
 
 # Sidebar content
 selected_view = st.sidebar.selectbox("Select Data View", ["Hourly", "Daily", "Monthly", "Seasonal"])
